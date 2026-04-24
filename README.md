@@ -33,3 +33,19 @@ The agent will work through each question in `math_questions.md` and print the R
 - `products.json` - product catalog with prices
 - `math_questions.md` - the questions the agent solves
 - `.env.example` - template for your API key
+
+## Demo Video
+
+Watch the demo here: https://youtu.be/VcmiOrkoxYo
+
+## Final Implementation Notes
+
+- The `product_lookup` tool is now fully implemented in `agent.py` as required by the assignment. It reads `products.json`, looks up the product name exactly as provided, and returns the price as a string or a helpful message listing available products if not found.
+- The `@agent.tool_plain` decorator is used directly above the function, and the implementation uses `json` from the existing import.
+- No changes were made to `calculator_tool`, `load_questions`, `main`, or the system prompt except as required for the new tool.
+- `.env` and API keys are not modified or included in the codebase.
+- To run the agent and see the ReAct trace for each question, use:
+  ```bash
+  uv run agent.py
+  ```
+- The agent will automatically use both the calculator and product lookup tools as needed to answer questions in `math_questions.md`.
